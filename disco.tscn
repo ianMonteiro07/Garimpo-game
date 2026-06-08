@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://coiqqh16cokq0"]
+
+[ext_resource type="Texture2D" uid="uid://xvuji8e3c438" path="res://icon.svg" id="1_fygv6"]
+[ext_resource type="Script" uid="uid://bojve3co68y6u" path="res://disco.gd" id="1_gi8b8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2yge"]
+radius = 80.622574
+
+[node name="Disco" type="Area2D" unique_id=987867907]
+script = ExtResource("1_gi8b8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1512718883]
+modulate = Color(1, 1, 0.039215688, 1)
+texture = ExtResource("1_fygv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=157939633]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_h2yge")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

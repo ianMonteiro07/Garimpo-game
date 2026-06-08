@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://5mtylegjo0wt"]
+
+[ext_resource type="Texture2D" uid="uid://xvuji8e3c438" path="res://icon.svg" id="1_ideak"]
+[ext_resource type="Script" uid="uid://cmfhcbnv8p8vg" path="res://npc.gd" id="1_xxcha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxcha"]
+size = Vector2(446, 408)
+
+[node name="NPC" type="Area2D" unique_id=1951759087]
+script = ExtResource("1_xxcha")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1040182810]
+modulate = Color(1, 0.0627451, 1, 1)
+texture = ExtResource("1_ideak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1634237921]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_xxcha")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

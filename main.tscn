@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://f867d4r2avup"]
+
+[ext_resource type="Script" uid="uid://g5podvqf7jp" path="res://player.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://xvuji8e3c438" path="res://icon.svg" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://5mtylegjo0wt" path="res://npc.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://coiqqh16cokq0" path="res://disco.tscn" id="4_1bvp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+
+[node name="Main" type="Node2D" unique_id=1800816381]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1096323695]
+position = Vector2(580, 328)
+script = ExtResource("1_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=2119148913]
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=901929133]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="NPC" parent="." unique_id=1951759087 instance=ExtResource("3_h2yge")]
+position = Vector2(218, 198)
+
+[node name="Disco" parent="." unique_id=987867907 instance=ExtResource("4_1bvp3")]
+position = Vector2(1054, 560)
