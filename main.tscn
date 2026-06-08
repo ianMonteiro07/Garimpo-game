@@ -6,21 +6,90 @@
 [ext_resource type="PackedScene" uid="uid://coiqqh16cokq0" path="res://disco.tscn" id="4_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(131, 131)
 
 [node name="Main" type="Node2D" unique_id=1800816381]
 
+[node name="Chao" type="ColorRect" parent="." unique_id=832092580]
+offset_left = -2984.0
+offset_top = -2685.0
+offset_right = 3036.0
+offset_bottom = 2763.0
+color = Color(0.58431375, 0.47843137, 0.3372549, 1)
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1096323695]
-position = Vector2(580, 328)
+position = Vector2(583, 323)
 script = ExtResource("1_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=2119148913]
 texture = ExtResource("2_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=901929133]
+position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_1bvp3")
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=790768305]
+zoom = Vector2(0.6, 0.6)
+
 [node name="NPC" parent="." unique_id=1951759087 instance=ExtResource("3_h2yge")]
-position = Vector2(218, 198)
+position = Vector2(220, 204)
 
 [node name="Disco" parent="." unique_id=987867907 instance=ExtResource("4_1bvp3")]
-position = Vector2(1054, 560)
+position = Vector2(2589, -2315)
+valor = 300
+
+[node name="Disco7" parent="." unique_id=573483547 instance=ExtResource("4_1bvp3")]
+position = Vector2(275, -1975)
+nome_disco = "Jorge Benjor"
+valor = 200
+
+[node name="Disco8" parent="." unique_id=552785754 instance=ExtResource("4_1bvp3")]
+position = Vector2(-695, -608)
+nome_disco = "Alceu Valença"
+valor = 400
+
+[node name="Disco9" parent="." unique_id=1093628874 instance=ExtResource("4_1bvp3")]
+position = Vector2(2027, 2165)
+nome_disco = "Elis Regina"
+valor = 200
+
+[node name="Disco3" parent="." unique_id=1983757367 instance=ExtResource("4_1bvp3")]
+position = Vector2(1603, -976)
+nome_disco = "Djavan"
+valor = 1000
+
+[node name="Disco4" parent="." unique_id=963038637 instance=ExtResource("4_1bvp3")]
+position = Vector2(-2674, -256)
+nome_disco = "Tom Jobim"
+valor = 700
+
+[node name="Disco5" parent="." unique_id=693035656 instance=ExtResource("4_1bvp3")]
+position = Vector2(-2027, 2018)
+nome_disco = "Chico Buarque"
+valor = 800
+
+[node name="Disco6" parent="." unique_id=722441975 instance=ExtResource("4_1bvp3")]
+position = Vector2(-1840, -1623)
+nome_disco = " Gal Costa"
+valor = 950
+
+[node name="Disco2" parent="." unique_id=1783468329 instance=ExtResource("4_1bvp3")]
+position = Vector2(597, 876)
+nome_disco = "Caetano Veloso"
+valor = 500
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1077397663]
+
+[node name="Panel" type="Panel" parent="UI" unique_id=893067777]
+visible = false
+offset_left = 300.0
+offset_top = 200.0
+offset_right = 700.0
+offset_bottom = 600.0
+
+[node name="Label" type="Label" parent="UI/Panel" unique_id=58138067]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 45.0
+offset_right = 356.0
+offset_bottom = 363.0
