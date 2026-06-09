@@ -5,6 +5,15 @@ extends Area2D
 @export var peso: int = 1
 @export var valor: int = 50
 
+# Pega a referência do nó Label que você adicionou na cena
+@onready var info_label = $Label
+
+# _ready roda assim que o disco aparece na tela (quando você dá Play)
+func _ready():
+	# Verifica se o Label existe e atualiza o texto com os valores do Inspetor
+	if info_label:
+		info_label.text = "R$ " + str(valor) + " | " + str(peso) + "kg"
+
 # Esta função permite que o Player saiba exatamente onde este disco está
 func get_posicao():
 	return global_position

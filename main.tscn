@@ -8,12 +8,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(131, 131)
 
+[sub_resource type="LabelSettings" id="LabelSettings_1bvp3"]
+font_size = 70
+
 [node name="Main" type="Node2D" unique_id=1800816381]
 
 [node name="Chao" type="ColorRect" parent="." unique_id=832092580]
-offset_left = -2984.0
+offset_left = -2565.0
 offset_top = -2685.0
-offset_right = 3036.0
+offset_right = 3455.0
 offset_bottom = 2763.0
 color = Color(0.58431375, 0.47843137, 0.3372549, 1)
 
@@ -22,6 +25,7 @@ position = Vector2(583, 323)
 script = ExtResource("1_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=2119148913]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=901929133]
@@ -31,52 +35,103 @@ shape = SubResource("RectangleShape2D_1bvp3")
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=790768305]
 zoom = Vector2(0.2, 0.2)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=490629267]
+
+[node name="TempoLabel" type="Label" parent="Player/CanvasLayer" unique_id=1147603060]
+offset_top = 50.0
+offset_right = 636.0
+offset_bottom = 404.0
+label_settings = SubResource("LabelSettings_1bvp3")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="Player" unique_id=1361457331]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
 [node name="NPC" parent="." unique_id=1951759087 instance=ExtResource("3_h2yge")]
 position = Vector2(220, 204)
 
 [node name="Disco" parent="." unique_id=987867907 instance=ExtResource("4_1bvp3")]
 position = Vector2(2589, -2315)
-valor = 300
+peso = 2
+valor = 450
 
 [node name="Disco7" parent="." unique_id=573483547 instance=ExtResource("4_1bvp3")]
 position = Vector2(275, -1975)
 nome_disco = "Jorge Benjor"
 valor = 200
 
+[node name="Disco14" parent="." unique_id=1507181388 instance=ExtResource("4_1bvp3")]
+position = Vector2(1971, 512)
+nome_disco = "Marilia"
+peso = 3
+valor = 25
+
 [node name="Disco8" parent="." unique_id=552785754 instance=ExtResource("4_1bvp3")]
 position = Vector2(-695, -608)
 nome_disco = "Alceu Valença"
-valor = 400
+valor = 100
 
 [node name="Disco9" parent="." unique_id=1093628874 instance=ExtResource("4_1bvp3")]
-position = Vector2(2027, 2165)
+position = Vector2(2704, 2522)
 nome_disco = "Elis Regina"
-valor = 200
+peso = 3
+valor = 400
+
+[node name="Disco10" parent="." unique_id=1790749242 instance=ExtResource("4_1bvp3")]
+position = Vector2(2489, 1926)
+nome_disco = "Seu JORGE"
+peso = 2
+valor = 100
+
+[node name="Disco11" parent="." unique_id=1487654521 instance=ExtResource("4_1bvp3")]
+position = Vector2(405, -993)
+nome_disco = "Zezo"
+peso = 4
+valor = 20
 
 [node name="Disco3" parent="." unique_id=1983757367 instance=ExtResource("4_1bvp3")]
 position = Vector2(1603, -976)
 nome_disco = "Djavan"
-valor = 1000
+peso = 3
+valor = 500
 
 [node name="Disco4" parent="." unique_id=963038637 instance=ExtResource("4_1bvp3")]
-position = Vector2(-2674, -256)
+position = Vector2(-2335, -436)
 nome_disco = "Tom Jobim"
-valor = 700
+peso = 2
+valor = 100
 
 [node name="Disco5" parent="." unique_id=693035656 instance=ExtResource("4_1bvp3")]
 position = Vector2(-2027, 2018)
 nome_disco = "Chico Buarque"
-valor = 800
+peso = 2
+valor = 350
+
+[node name="Disco12" parent="." unique_id=888238506 instance=ExtResource("4_1bvp3")]
+position = Vector2(-2448, 1115)
+nome_disco = "ludmilla"
+peso = 2
+valor = 200
 
 [node name="Disco6" parent="." unique_id=722441975 instance=ExtResource("4_1bvp3")]
 position = Vector2(-1840, -1623)
 nome_disco = " Gal Costa"
+peso = 3
 valor = 950
 
 [node name="Disco2" parent="." unique_id=1783468329 instance=ExtResource("4_1bvp3")]
 position = Vector2(597, 876)
-nome_disco = "Caetano Veloso"
-valor = 500
+nome_disco = "Joyce Alane"
+peso = 3
+valor = 20
+
+[node name="Disco13" parent="." unique_id=744283229 instance=ExtResource("4_1bvp3")]
+position = Vector2(-1407, 936)
+nome_disco = "Angelo li"
+peso = 2
+valor = 200
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1077397663]
 
@@ -84,7 +139,7 @@ valor = 500
 visible = false
 offset_left = 300.0
 offset_top = 200.0
-offset_right = 700.0
+offset_right = 900.0
 offset_bottom = 600.0
 
 [node name="Label" type="Label" parent="UI/Panel" unique_id=58138067]
