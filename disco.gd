@@ -5,6 +5,10 @@ extends Area2D
 @export var peso: int = 1
 @export var valor: int = 50
 
+# Esta função permite que o Player saiba exatamente onde este disco está
+func get_posicao():
+	return global_position
+
 func _on_body_entered(body):
 	if body.name == "Player":
 		# Cria um dicionário com os dados reais do disco

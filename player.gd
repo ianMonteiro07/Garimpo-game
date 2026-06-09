@@ -14,13 +14,29 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	move_and_slide()
 
-	# Opção para fechar o painel ao apertar ESC
-	if Input.is_action_just_pressed("ui_cancel"):
-		var main_node = get_tree().current_scene
-		var painel_ui = main_node.get_node_or_null("UI/Panel")
-		if painel_ui:
-			painel_ui.hide()
+func _input(event):
+	# Diagnóstico: fecha painel com ESC
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			var painel_ui = get_tree().current_scene.get_node_or_null("UI/Panel")
+			if painel_ui: painel_ui.hide()
+			
+		# Calcula e desenha rota com ENTER
+		if event.keycode == KEY_ENTER:
+			calcular_rota_tsp()
 
+func atualizar_linha_rota(lista_discos):
+	var linha = get_tree().current_scene.get_node_or_null("RotaVisual")
+	if not linha:
+		print("AVISO: Nó 'RotaVisual' não encontrado no Main. Adicione um Line2D.")
+		return
+		
+	linha.clear_points()
+	linha.add_point(global_position) # Começa no jogador
+	
+	for disco in lista_discos:
+		linha.add_point(disco.get_posicao()) # Vai para cada disco na ordem
+		
 func resolver_mochila():
 	var n = inventario.size()
 	if n == 0:
@@ -62,9 +78,45 @@ func resolver_mochila():
 		texto_final += "- " + disco + "\n"
 	texto_final += "\n(Pressione ESC para fechar)"
 		
-	var main_node = get_tree().current_scene
-	var painel_ui = main_node.get_node("UI/Panel")
-	var label_ui = main_node.get_node("UI/Panel/Label")
+	var painel_ui = get_tree().current_scene.get_node("UI/Panel")
+	var label_ui = get_tree().current_scene.get_node("UI/Panel/Label")
 	
 	painel_ui.show()
 	label_ui.text = texto_final
+
+func calcular_rota_tsp():
+	print("--- Iniciando cálculo TSP ---")
+	var todos_nos = get_tree().current_scene.get_children()
+	var discos = []
+	
+	for n in todos_nos:
+		if n.has_method("get_posicao"):
+			discos.append(n)
+			
+	if discos.size() == 0:
+		print("ERRO: Nenhum disco encontrado.")
+		return
+	
+	var rota_objetos = []
+	var visitados = []
+	var atual = global_position
+	
+	while visitados.size() < discos.size():
+		var mais_proximo = null
+		var menor_distancia = INF
+		
+		for d in discos:
+			if not d in visitados:
+				var dist = atual.distance_to(d.get_posicao())
+				if dist < menor_distancia:
+					menor_distancia = dist
+					mais_proximo = d
+		
+		if mais_proximo:
+			visitados.append(mais_proximo)
+			rota_objetos.append(mais_proximo)
+			atual = mais_proximo.get_posicao()
+			
+	# Desenha a linha amarela na tela
+	atualizar_linha_rota(rota_objetos)
+	print("Rota Otimizada calculada e desenhada!")

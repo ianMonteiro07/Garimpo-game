@@ -29,7 +29,7 @@ position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=790768305]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.2, 0.2)
 
 [node name="NPC" parent="." unique_id=1951759087 instance=ExtResource("3_h2yge")]
 position = Vector2(220, 204)
@@ -93,3 +93,6 @@ offset_left = 54.0
 offset_top = 45.0
 offset_right = 356.0
 offset_bottom = 363.0
+
+[node name="RotaVisual" type="Line2D" parent="." unique_id=401483092]
+default_color = Color(1, 1, 0, 1)
